@@ -1,8 +1,10 @@
 const searchInput = document.getElementById("searchInput");
 const bookCards = document.querySelectorAll(".book-card");
+const noResultMessage = document.getElementById("noResultMessage");
 
 searchInput.addEventListener("input", function () {
   const keyword = searchInput.value.toLowerCase();
+  let matchCount = 0;
 
   bookCards.forEach(function (card) {
     const title = card.querySelector(".book-title").textContent.toLowerCase();
@@ -17,4 +19,10 @@ searchInput.addEventListener("input", function () {
       card.style.display = "none";
     }
   });
+
+if (matchCount === 0) {
+    noResultMessage.style.display = "block";
+  } else {
+    noResultMessage.style.display = "none";
+  }
 });
